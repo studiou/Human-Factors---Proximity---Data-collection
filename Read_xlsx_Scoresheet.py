@@ -11,8 +11,8 @@ def importfromxls(filepath):
     ###############################################################################################
     ###############################################################################################
     from openpyxl import load_workbook
-    wb = load_workbook(filepath)
-    ws = wb['Data Sheet']
+    workbook = load_workbook(filepath)
+    ws = workbook['Data Sheet']
 
     #a database of all the videos
     index = []

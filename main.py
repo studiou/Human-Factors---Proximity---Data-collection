@@ -26,6 +26,7 @@ filepath2 = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usabili
 
 #search file path directory and obtain all file paths for xlsx files
 allxlsxfilepaths = get_all_xlsx_filepaths.builddirectorylist(filepath2)
+print allxlsxfilepaths
 
 #This all the data from the excel spreadsheet. ie. raw data
 imported_xls_data = {}
@@ -35,6 +36,6 @@ imported_xls_data = Read_xlsx_Scoresheet.importfromxls(filepath)
 
 
 
-print imported_xls_data
+#rint imported_xls_data
 #print distance
 #print speed
