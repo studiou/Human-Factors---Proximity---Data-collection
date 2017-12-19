@@ -8,33 +8,27 @@ import get_all_xlsx_filepaths
 import math
 
 ###############################################################################################
-#########################Initial Variables#####################################################
+#########################Initial Global Variables###############################################
 ###############################################################################################
 ###############################################################################################
 
 
-#Strings holds the filepath of the excel spreadsheet with the data
-#Macbook Pro
-#filepath = "/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Proxmity score sheet/Test1.xlsx"
+#Strings holds the filepath of the excel spreadsheets with the collected data
+#imac file path
+filepath = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/Data"
+#filepath2 = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Proxmity score sheet/"
 
-#filepath = "/Users/joel/Misc/Joel's Stuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Proxmity score sheet/Test1.xlsx"
+#search filepath directory for xlsx files. returns the complete file paths for xlsx files
+allxlsxfilepaths = get_all_xlsx_filepaths.builddirectorylist(filepath)
 
-#imac
-filepath = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Proxmity score sheet/Test1.xlsx"
-
-filepath2 = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Proxmity score sheet/"
-
-#search file path directory and obtain all file paths for xlsx files
-allxlsxfilepaths = get_all_xlsx_filepaths.builddirectorylist(filepath2)
-print allxlsxfilepaths
 
 #This all the data from the excel spreadsheet. ie. raw data
 imported_xls_data = {}
 
 #get data from excel spreadsheet and dump it into imported_xls_data array. Just pass the file path to the function and it returns an array with all data from the array
-imported_xls_data = Read_xlsx_Scoresheet.importfromxls(filepath)
+imported_xls_data = Read_xlsx_Scoresheet.importfromxls(allxlsxfilepaths)
 
-
+print imported_xls_data
 
 #rint imported_xls_data
 #print distance
