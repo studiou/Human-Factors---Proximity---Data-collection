@@ -7,6 +7,16 @@ def importfromxls(allxlsxfilepaths):
 
     ###############################################################################################
     ###############################################################################################
+    #################################initalize global varibles#############################
+    ###############################################################################################
+    ###############################################################################################
+
+    #a database of all the dictionary entries
+    index = []
+
+
+    ###############################################################################################
+    ###############################################################################################
     #################################Get data into a dictionary array#############################
     ###############################################################################################
     ###############################################################################################
@@ -16,8 +26,6 @@ def importfromxls(allxlsxfilepaths):
         workbook = load_workbook(allxlsxfilepaths[filepointer])
         sheet = workbook['Data Sheet']
 
-        #a database of all the videos
-        index = []
         #temporarly store data from spreadsheet
         temp = []
         flag = 1
@@ -28,12 +36,13 @@ def importfromxls(allxlsxfilepaths):
             for cell in row:
                 if cell.value == "Subject#.Video.Filename":#break loop once you hit the end of data entry within the spreadsheet.
                     break
-                    # if cell.value == "|":#break loop if you are at the end of the list
 
-                    # break
+                if cell.value == "|":#break loop if you are at the end of the list
+                    break
+
                 if cell.value <> None:#get rid of the empty cells
-                    flag = str(cell.value)#convert to string
-                    if flag[-1] <> ':':#test to see if it is a label, if so don't record
+                    temp2 = str(cell.value)#convert to string
+                    if temp2[-1] <> ':':#test to see if it is a label, if so don't record
                         temp.append(cell.value)
 
             if cell.value == "Subject#.Video.Filename":#break loop if you are at the end of the list
@@ -52,4 +61,4 @@ def importfromxls(allxlsxfilepaths):
     ###############################################################################################
     ###############################################################################################
     ###############################################################################################
-    return imported_xls_data
+    return imported_xls_data, index
