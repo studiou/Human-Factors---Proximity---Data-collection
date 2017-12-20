@@ -4,6 +4,7 @@ import collections
 import xlsxwriter
 import openpyxl
 import Read_xlsx_Scoresheet
+import Solve_For_X
 import get_all_xlsx_filepaths
 import math
 
