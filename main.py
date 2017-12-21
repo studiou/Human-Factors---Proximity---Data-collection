@@ -38,12 +38,17 @@ imported_xls_data = Read_xlsx_Scoresheet.importfromxls(allxlsxfilepaths)
 #imported_xls_data[x][6] = timestamp of the 1st step onto the MAT with LEFT foot (in 00:00:000 hours, mins, milliseconds)
 
 #imported_xls_data[x][7] = foot distance of the 1st  step onto the MAT with RIGHT foot (in inches)
+
 #imported_xls_data[x][8] = angle of the 1st  step onto the MAT with RIGHT foot (in degrees)
+
 #imported_xls_data[x][9] = timestamp of the 1st  step onto the MAT with RIGHT foot (in 00:00:000 hours, mins, milliseconds)
 
 #imported_xls_data[x][10] = foot distance of the LEFT foot at fridge (if a hit) (in inches)
+Y_at_fridge_LEFT_step = 4
 #imported_xls_data[x][11] = angle of the LEFT foot at fridge (if a hit) (in degrees)
+Angle_at_fridge_LEFT_step = 5
 #imported_xls_data[x][12] = timestamp of the LEFT foot at fridge (if a hit) (in 00:00:000 hours, mins, milliseconds)
+Timestamp_at_fridge_LEFT_step = 6
 
 #imported_xls_data[x][13] = foot distance of the RIGHT foot at fridge (if a hit) (in inches)
 #imported_xls_data[x][14] = angle of the RIGHT foot at fridge (if a hit) (in degrees)
