@@ -1,5 +1,5 @@
 __author__ = 'joel'
- import math
+import math
 
 def solveforx(y, angle):
 
