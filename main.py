@@ -52,12 +52,10 @@ imported_xls_data = Read_xlsx_Scoresheet.importfromxls(allxlsxfilepaths)
 #imported_xls_data[x][16] = foot distance of the Last LEFT foot step before leaving mat (in inches)
 #imported_xls_data[x][17] = angle of the Last LEFT foot step before leaving mat (in degrees)
 #imported_xls_data[x][18] = timestamp of the Last LEFT foot step before leaving mat (in 00:00:000 hours, mins, milliseconds)
- 
+
 #imported_xls_data[x][19] = foot distance of the Last RIGHT foot step before leaving mat: (in inches)
 #imported_xls_data[x][20] = angle of the Last RIGHT foot step before leaving mat: (in degrees)
 #imported_xls_data[x][21] = timestamp of the Last RIGHT foot step before leaving mat: (in 00:00:000 hours, mins, milliseconds)
- 
-
 
 
 
