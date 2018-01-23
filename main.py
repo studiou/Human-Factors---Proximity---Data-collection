@@ -26,7 +26,7 @@ allxlsxfilepaths = get_all_xlsx_filepaths.builddirectorylist(filepath)
 #This all the data from the excel spreadsheet. ie. raw data
 imported_xls_data = {}
 
-#get data from excel spreadsheet and dump it into imported_xls_data array. Just pass the file path to the function and it returns an array with all data from the array
+#get data from excel spreadsheet and dump it into imported_xls_dta array. Just pass the file path to the function and it returns an array with all data from the array
 imported_xls_data = Read_xlsx_Scoresheet.importfromxls(allxlsxfilepaths)
 
 print imported_xls_data

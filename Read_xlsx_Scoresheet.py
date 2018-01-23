@@ -3,8 +3,10 @@ def importfromxls(allxlsxfilepaths):
     """get all the files under a directory and its subdirectories"""
     import os
     import openpyxl
+
     imported_xls_data = {}
 
+    #allxlsxfilepaths = '/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code//P04.proximity.score.sheet.xlsx'
     ###############################################################################################
     ###############################################################################################
     #################################initalize global varibles#############################
@@ -49,6 +51,15 @@ def importfromxls(allxlsxfilepaths):
                 break
 
             if flag >= 6:
+
+                #same video name test
+                rename = 0
+                for item in index:
+
+                    if item == temp [0]:
+                        temp[0] = temp[0] + "." + str(rename + 1)
+                        rename = rename + 1
+
                 imported_xls_data[temp[0]]=temp[1:]
                 index.append(temp[0])
                 temp = []
@@ -61,4 +72,4 @@ def importfromxls(allxlsxfilepaths):
     ###############################################################################################
     ###############################################################################################
     ###############################################################################################
-    return imported_xls_data, index
+    return imported_xls_data
