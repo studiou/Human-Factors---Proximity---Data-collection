@@ -43,3 +43,6 @@ class Raw(Enum):
             lastRIGHTdegrees = 20
             lastRIGHTtstamp = 21
             
+            ArrayLengthHit = 22
+            ArrayLengthMiss = 18 
+            
