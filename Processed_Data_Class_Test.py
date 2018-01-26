@@ -80,6 +80,10 @@ class TestCartesianClass(unittest.TestCase):
             actualEntry = P_Data(key, value)
             self.assertEqual("Female", actualEntry.sex)
 
+    def test_instantiation_WithTestData1YieldsProper_pnum_video(self):
+        for key, value in TestDataSample1.iteritems():
+            actualEntry = P_Data(key, value)
+            self.assertEqual('00:00:03:908', actualEntry.firstStep)
 
 if __name__ == "__main__":
     unittest.main()

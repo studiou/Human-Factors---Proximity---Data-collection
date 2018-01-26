@@ -1,5 +1,6 @@
 __author__ = 'joel'
 
+import Time_Calculator
 from Dict_Enum import *
 
 class P_Data:
@@ -13,10 +14,16 @@ class P_Data:
             self.age = dataArray[Raw.age]
             self.event = dataArray[Raw.event]
             self.target = dataArray[Raw.target]
-            self.firstStep =
+            #find the oldest time and report that as the first step
+            flag = Time_Calculator.oddest_time(dataArray[Raw.firstLEFTtstamp,Raw.firstRIGHTtstamp])
+            if flag == dataArray[Raw.firstLEFTtstamp]:
+                self.firstStep = dataArray[Raw.firstLEFTtstamp]
+            else:
+                self.firstStep = dataArray[Raw.firstRIGHTtstamp]
         else:
             self.sex = None
             self.age = None
             self.event = None
-            self.target = None    
+            self.target = None
+            self.firstStep = None
             
