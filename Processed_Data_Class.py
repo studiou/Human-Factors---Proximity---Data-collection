@@ -13,6 +13,7 @@ class P_Data:
             self.age = dataArray[Raw.age]
             self.event = dataArray[Raw.event]
             self.target = dataArray[Raw.target]
+            self.firstStep =
         else:
             self.sex = None
             self.age = None
