@@ -7,6 +7,11 @@ import unittest
 import os.path
 
 from Processed_Data_Class import *
+from PolarPointClass import *
+from CartesianPointClass import *
+from PersonProfileClass import *
+from Dict_Enum import *
+
 
 TestDataSample1 = {u'Sub.17.Aug.28.10.47pm.a': [u'Female', u'Adult', u'Hit', u'Dispense', 37L, 0L, u'00:00:03:908', 17L, 0L, u'00:00:04:483', 11L, 15L, u'00:00:05:067', 18L, -31L, u'00:00:05:666', 47L, -46L, u'00:00:29:845', 33L, 4L, u'00:00:28:756']}
 TestDataSample1BadLength = {u'Sub.17.Aug.28.10.47pm.a': [u'Female', u'Adult', u'Hit', u'Dispense', 37L, 0L, u'00:00:03:908', 17L, 0L, u'00:00:04:483', 11L, 15L, u'00:00:05:067', 18L, -31L, u'00:00:05:666', 47L, -46L, u'00:00:29:845', 33L, 4L]}
@@ -92,12 +97,21 @@ class TestCartesianClass(unittest.TestCase):
         for key, value in TestDataSample_WithFalseAlarm.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual("Female", actualEntry.sex)
-
  
-#     def test_instantiation_WithTestData1YieldsProper_pnum_video(self):
-#         for key, value in TestDataSample1.iteritems():
-#             actualEntry = P_Data(key, value)
-#             self.assertEqual('00:00:03:908', actualEntry.firstStep)
+    def test_instantiation_WithTestData1_FirstPersonProfileCorrect(self):
+        for key, value in TestDataSample1.iteritems():
+            actualEntry = P_Data(key, value)
+            self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
+            self.assertEqual(None, actualEntry.PersonProfile1.pointNear)
+            self.assertEqual(None, actualEntry.PersonProfile1.pointFar)
+            
+#           radius, angle - polar point 1 (nearest) 
+#             self.assertEqual(37.0, actualEntry.PersonProfile1.PointNear.radius)
+#             self.assertEqual(0.0, actualEntry.PersonProfile1.PointNear.angle)
+             
+#            radius, angle - polar point 2 (further) 
+#             self.assertEqual(37.0, actualEntry.PersonProfile1.pointFar.radius)
+#             self.assertEqual(0.0, actualEntry.PersonProfile1.pointFar.angle)
 
 if __name__ == "__main__":
     unittest.main()

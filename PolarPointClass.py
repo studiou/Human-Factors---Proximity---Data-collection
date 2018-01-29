@@ -16,7 +16,7 @@ class PolarPointClass:
             self.angle = float(angle)
         
     # method to convert the current polar coordinates to cartesian
-    def getPolarCoordinates(self):
+    def getCartesianCoordinates(self):
         x = None
         y = None
         # Note that angle is relative to the vertical
