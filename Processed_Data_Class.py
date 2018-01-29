@@ -7,8 +7,6 @@ from CartesianPointClass import *
 from PersonProfileClass import *
 from Dict_Enum import *
 
-apoint = PolarPointClass(1.41, 45)
-
 class P_Data:
     def __init__(self, pnum_video=None, dataArray=None):
         # the participant number - shared for each household
@@ -20,16 +18,11 @@ class P_Data:
             self.age = dataArray[Raw.age]
             self.event = dataArray[Raw.event]
             self.target = dataArray[Raw.target]
-#             
-# #             self.PersonProfile1 = PersonProfileClass(0)
-#              
-# #             first find the oldest
-# #             then given that...  the first time is always 0..
-# #             
+#             first find the oldest
+#             then given that...  the first time is always 0..
 #             use routine to calculate the 2 points in the person profile
             foot = "Left"
-            point = PolarPointClass(1.41, 45)
-#             point = PolarPointClass(37.0, 0)
+            point = PolarPointClass(37, 0)
             pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
             self.PersonProfile1 = PersonProfileClass(0, pointNear, pointFar)
 #             
@@ -87,6 +80,14 @@ def GenerateProfile(age = None, sex = None, foot = None, point = None):
                 p2y = orig_y + deltaLong_y 
         else:
             if (foot == "Left"):
+                print "\n I got here for angle and foot\n"
+                print " orig_x = " + str(orig_x)
+                print " orig_y = " + str(orig_y)
+                print " Delta x short = " + str(deltaShort_x)
+                print " Delta y short = " + str(deltaShort_y)
+                print " Delta x long = " + str(deltaLong_x)
+                print " Delta y long = " + str(deltaLong_y)
+                
                 p1x = orig_x + deltaShort_x
                 p1y = orig_y - deltaShort_y 
                 p2x = orig_x - deltaLong_x
@@ -98,7 +99,17 @@ def GenerateProfile(age = None, sex = None, foot = None, point = None):
                 p2y = orig_y + deltaShort_y
         cartesianP1 = CartesianPointClass(p1x,p1y)
         polarP1_radius, polarP1_angle =  cartesianP1.getPolarCoordinates()
+        print "PolarR radius = " + str(polarP1_radius)
+        print "PolarR angle = " + str(polarP1_angle)
+                
+        print "Cartesian x = " + str(cartesianP1.x)
+        print "Cartesian y = " + str(cartesianP1.y)
+        
         point1 = PolarPointClass(polarP1_radius, polarP1_angle)
+        print "polar radius = " + str(point1.radius)
+        print "polar angle = " + str(point1.angle)
+        
+        
         cartesianP2 = CartesianPointClass(p2x,p2y)
         polarP2_radius, polarP2_angle =  cartesianP2.getPolarCoordinates()
         point2 = PolarPointClass(polarP2_radius, polarP2_angle)

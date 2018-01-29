@@ -43,67 +43,67 @@ class TestCartesianClass(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_instantiation_WithTestData1YieldsProper_pnum_video(self):
-        for key, value in TestDataSample1.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual('Sub.17.Aug.28.10.47pm.a', actualEntry.pnum_video)
- 
-    def test_instantiation_WithNoData_pnum_video_is_None(self):
-        for key, value in TestDataSample1.iteritems():
-            actualEntry = P_Data()
-            self.assertEqual(None, actualEntry.pnum_video)
-  
-    def test_instantiation_Correctfor_sex(self):
-        for key, value in TestDataSample1.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual("Female", actualEntry.sex)
-  
-    def test_instantiation_Correctfor_age(self):
-        for key, value in TestDataSample1.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual("Adult", actualEntry.age)
-  
-    def test_instantiation_Correctfor_event(self):
-        for key, value in TestDataSample1.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual("Hit", actualEntry.event)
-  
-    def test_instantiation_Correctfor_target(self):
-        for key, value in TestDataSample1.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual("Dispense", actualEntry.target)
-  
-    def test_instantiation_BadLength_NoAttributes(self):
-        for key, value in TestDataSample2_BadLength.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual(None, actualEntry.target)
-             
-    def test_instantiation_WithNoArrayu(self):
-        for key, value in TestDataSample_WithFalseAlarm.iteritems():
-            actualEntry = P_Data(key)
-            self.assertEqual(None, actualEntry.sex)
-
-    def test_instantiation_WithHitArrayDataLengthWrong(self):
-        for key, value in TestDataSample1BadLength.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual(None, actualEntry.sex)
-
-    def test_instantiation_WithMissArrayDataLengthWrong(self):
-        for key, value in TestDataSample_WithFalseAlarmBadDataLength.iteritems():
-            actualEntry = P_Data(key,value)
-            self.assertEqual(None, actualEntry.sex)
-             
-    def test_instantiation_WithFalseAlarm_YieldsSex(self):
-        for key, value in TestDataSample_WithFalseAlarm.iteritems():
-            actualEntry = P_Data(key, value)
-            self.assertEqual("Female", actualEntry.sex)
+#     def test_instantiation_WithTestData1YieldsProper_pnum_video(self):
+#         for key, value in TestDataSample1.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual('Sub.17.Aug.28.10.47pm.a', actualEntry.pnum_video)
+#  
+#     def test_instantiation_WithNoData_pnum_video_is_None(self):
+#         for key, value in TestDataSample1.iteritems():
+#             actualEntry = P_Data()
+#             self.assertEqual(None, actualEntry.pnum_video)
+#   
+#     def test_instantiation_Correctfor_sex(self):
+#         for key, value in TestDataSample1.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual("Female", actualEntry.sex)
+#   
+#     def test_instantiation_Correctfor_age(self):
+#         for key, value in TestDataSample1.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual("Adult", actualEntry.age)
+#   
+#     def test_instantiation_Correctfor_event(self):
+#         for key, value in TestDataSample1.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual("Hit", actualEntry.event)
+#   
+#     def test_instantiation_Correctfor_target(self):
+#         for key, value in TestDataSample1.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual("Dispense", actualEntry.target)
+#   
+#     def test_instantiation_BadLength_NoAttributes(self):
+#         for key, value in TestDataSample2_BadLength.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual(None, actualEntry.target)
+#              
+#     def test_instantiation_WithNoArrayu(self):
+#         for key, value in TestDataSample_WithFalseAlarm.iteritems():
+#             actualEntry = P_Data(key)
+#             self.assertEqual(None, actualEntry.sex)
+# 
+#     def test_instantiation_WithHitArrayDataLengthWrong(self):
+#         for key, value in TestDataSample1BadLength.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual(None, actualEntry.sex)
+# 
+#     def test_instantiation_WithMissArrayDataLengthWrong(self):
+#         for key, value in TestDataSample_WithFalseAlarmBadDataLength.iteritems():
+#             actualEntry = P_Data(key,value)
+#             self.assertEqual(None, actualEntry.sex)
+#              
+#     def test_instantiation_WithFalseAlarm_YieldsSex(self):
+#         for key, value in TestDataSample_WithFalseAlarm.iteritems():
+#             actualEntry = P_Data(key, value)
+#             self.assertEqual("Female", actualEntry.sex)
  
     def test_instantiation_WithTestData1_FirstPersonProfileCorrect(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
-            self.assertEqual(None, actualEntry.PersonProfile1.pointNear)
-            self.assertEqual(None, actualEntry.PersonProfile1.pointFar)
+            self.assertEqual(37.25, actualEntry.PersonProfile1.pointNear.radius)
+            self.assertEqual(-37.9, actualEntry.PersonProfile1.pointNear.angle)
             
 #           radius, angle - polar point 1 (nearest) 
 #             self.assertEqual(37.0, actualEntry.PersonProfile1.PointNear.radius)
