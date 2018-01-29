@@ -60,6 +60,7 @@ def importfromxls(allxlsxfilepaths):
                         temp[0] = temp[0] + "." + str(rename + 1)
                         rename = rename + 1
 
+                
                 imported_xls_data[temp[0]]=temp[1:]
                 index.append(temp[0])
                 temp = []

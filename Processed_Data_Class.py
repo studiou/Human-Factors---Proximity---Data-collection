@@ -16,6 +16,7 @@ class P_Data:
             self.target = dataArray[Raw.target]
             #find the oldest time and report that as the first step
             flag = Time_Calculator.oddest_time(dataArray[Raw.firstLEFTtstamp,Raw.firstRIGHTtstamp])
+            print flag
             if flag == dataArray[Raw.firstLEFTtstamp]:
                 self.firstStep = dataArray[Raw.firstLEFTtstamp]
             else:
