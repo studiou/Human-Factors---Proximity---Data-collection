@@ -12,7 +12,7 @@ def oldest_time(time_1, time_2):
     return(oldest,whichTime)
 
 def returnDeltaTime (time):
-    hr, min, sec, ms = map(float,time.split(":"))
+    hr, min, sec, ms = map(int, time.split(":"))
     return (timedelta(hours = hr, minutes= min, seconds=sec, milliseconds=ms))
 
 
@@ -21,5 +21,4 @@ def difference_bt_time(time_1, time_2):
     t1 = returnDeltaTime(time_1)
     t2 = returnDeltaTime(time_2)
     outcome = t2 - t1
-
     return(outcome)

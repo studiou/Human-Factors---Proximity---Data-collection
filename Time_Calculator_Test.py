@@ -35,16 +35,25 @@ class TestCartesianClass(unittest.TestCase):
       self.assertEqual(expectedTimeOutcome, outputTime)
       self.assertEqual(1, outputNumeration)
 
+     def test_instantiation_WithTimestheSameInto_timeCalculation(self):
+      outputTime,outputNumeration = Time_Calculator.oldest_time(time_2,time_2)
+      expectedTimeOutcome = timedelta(hours = 00, minutes = 00, seconds = 03, milliseconds = 302)
+      self.assertEqual(expectedTimeOutcome, outputTime)
+      self.assertEqual(1, outputNumeration)
+      
      def test_instantiation_WithTestData3YieldsProper_timeCalculation(self):
       outputTime = Time_Calculator.difference_bt_time(time_1,time_2)
-      expectedTimeOutcome = timedelta(hours = 00, minutes = -01, seconds = 86, milliseconds = 919)
-      print expectedTimeOutcome
+      expectedTimeOutcome = timedelta(hours = 00, minutes = 00, seconds = -2, milliseconds = -81)
       self.assertEqual(expectedTimeOutcome, outputTime)
 
      def test_instantiation_WithTestData4YieldsProper_timeCalculation(self):
       outputTime = Time_Calculator.difference_bt_time(time_2,time_1)
-      expectedTimeOutcome = timedelta(hours = 00, minutes = 00, seconds = 02, milliseconds = 810)
-      print expectedTimeOutcome
+      expectedTimeOutcome = timedelta(hours = 00, minutes = 00, seconds = 02, milliseconds = 81.)
+      self.assertEqual(expectedTimeOutcome, outputTime)
+
+     def test_instantiation_DifferenceReturns0(self):
+      outputTime = Time_Calculator.difference_bt_time(time_1 ,time_1)
+      expectedTimeOutcome = timedelta(hours = 00, minutes = 00, seconds = 00, milliseconds = 00)
       self.assertEqual(expectedTimeOutcome, outputTime)
 
 if __name__ == "__main__":
