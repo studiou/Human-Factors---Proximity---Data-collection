@@ -103,7 +103,7 @@ class TestCartesianClass(unittest.TestCase):
             actualEntry = P_Data(key, value)
             self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
             self.assertEqual(37.25, actualEntry.PersonProfile1.pointNear.radius)
-            self.assertEqual(-37.9, actualEntry.PersonProfile1.pointNear.angle)
+            self.assertEqual(6.71, actualEntry.PersonProfile1.pointNear.angle)
             
 #           radius, angle - polar point 1 (nearest) 
 #             self.assertEqual(37.0, actualEntry.PersonProfile1.PointNear.radius)
