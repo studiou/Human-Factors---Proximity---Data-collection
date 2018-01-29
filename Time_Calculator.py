@@ -18,7 +18,8 @@ def returnDeltaTime (time):
 
 def difference_bt_time(time_1, time_2):
     #subtracts the first timestamp by the second timestamp
-    t1 = timedelta(hours = int(time_1[0]), minutes=int(time_1[1]), seconds=int(time_1[2]), milliseconds=int(time_1[3]))
-    t2 = timedelta(hours = int(time_2[0]), minutes=int(time_2[1]), seconds=int(time_2[2]), milliseconds=int(time_2[3]))
+    t1 = returnDeltaTime(time_1)
+    t2 = returnDeltaTime(time_2)
     outcome = t2 - t1
+
     return(outcome)

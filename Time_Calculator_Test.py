@@ -36,6 +36,12 @@ class TestCartesianClass(unittest.TestCase):
       self.assertEqual(1, outputNumeration)
 
      def test_instantiation_WithTestData3YieldsProper_timeCalculation(self):
+      outputTime = Time_Calculator.difference_bt_time(time_1,time_2)
+      expectedTimeOutcome = timedelta(hours = 00, minutes = -01, seconds = 86, milliseconds = 919)
+      print expectedTimeOutcome
+      self.assertEqual(expectedTimeOutcome, outputTime)
+
+     def test_instantiation_WithTestData4YieldsProper_timeCalculation(self):
       outputTime = Time_Calculator.difference_bt_time(time_2,time_1)
       expectedTimeOutcome = timedelta(hours = 00, minutes = 00, seconds = 02, milliseconds = 810)
       print expectedTimeOutcome
