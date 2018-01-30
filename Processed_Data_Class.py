@@ -23,7 +23,7 @@ class P_Data:
             #oldest, whichTime = Time_Calculator.oldest_time(dataArray[Raw.firstLEFTtstamp,Raw.firstRIGHTtstamp])
             #if whichTime == 1
             #   foot = "left"
-           #     point =
+           #     PersonProfileClass =
             #
 
             # else
