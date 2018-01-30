@@ -18,8 +18,17 @@ class P_Data:
             self.age = dataArray[Raw.age]
             self.event = dataArray[Raw.event]
             self.target = dataArray[Raw.target]
-#             first find the oldest
-#             then given that...  the first time is always 0..
+#
+#            first find the oldest
+            #oldest, whichTime = Time_Calculator.oldest_time(dataArray[Raw.firstLEFTtstamp,Raw.firstRIGHTtstamp])
+            #if whichTime == 1
+            #   foot = "left"
+           #     point =
+            #
+
+            # else
+#
+#            then given that...  the first time is always 0..
 #             use routine to calculate the 2 points in the person profile
             foot = "Left"
             point = PolarPointClass(37, 0)
