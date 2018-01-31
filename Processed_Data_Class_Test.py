@@ -19,6 +19,9 @@ TestDataSample1BadLength = {u'Sub.17.Aug.28.10.47pm.a': [u'Female', u'Adult', u'
 TestDataSample2 = {u'Sub.4.August.17.5:31am': [u'Female', u'Adult', u'Hit', u'Fridge door (no dispensor)', 15L, -31L, u'00:00:02:546', 30L, -40L, u'00:00:02:239', 15L, -31L, u'00:00:02:546', 30L, -40L, u'00:00:02:239', 23L, -45L, u'00:00:06:580', 38L, -12L, u'00:00:07:013']}
 TestDataSample2_BadLength = {u'Sub.4.August.16.8:18pm': [u'Female', u'Adult', u'Hit', u'Fridge door (no dispensor)', 21L, -15L, u'00:00:01:163', 39L, -30L, u'00:00:00:483', 21L, -15L, u'00:00:01:163', 22L, -40L, u'00:00:01:763', 14L, -30L, u'00:00:14:174', 38L, -20L]} 
 
+# same as test sample 2 except we made right foot closer to dispenser at fridge....
+TestDataSample3 = {u'Sub.4.August.17.5:31am': [u'Female', u'Adult', u'Hit', u'Fridge door (no dispensor)', 15L, -31L, u'00:00:02:546', 30L, -40L, u'00:00:02:239', 30L, -40L, u'00:00:03:239', 15L, -31L, u'00:00:03:546', 23L, -45L, u'00:00:06:580', 38L, -12L, u'00:00:07:013']}
+
 TestDataSample_WithFalseAlarm = {u'Sub.17.Aug.27.12.12pm': [u'Female', u'Adult', u'False alarm', u'Make a selection', 31L, -22L, u'00:00:05:558', 16L, 27L, u'00:00:06:100', u'None', u'None', u'None', u'None', u'None', u'None', 25L, 87L, u'00:00:06:595', 16L, 27L, u'00:00:06:100']}
 TestDataSample_WithFalseAlarmBadDataLength = {u'Sub.17.Aug.27.12.12pm': [u'Female', u'Adult', u'False alarm', u'Make a selection', 31L, -22L, u'00:00:05:558', 16L, 27L, u'00:00:06:100', u'None', u'None', u'None', u'None', u'None', u'None', 25L, 87L, u'00:00:06:595', 16L, 27L, u'00:00:06:100',0]}
 
@@ -111,7 +114,21 @@ class TestCartesianClass(unittest.TestCase):
             actualEntry = P_Data(key, value)
             self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
             self.assertEqual(34.29, actualEntry.PersonProfile1.pointNear.radius)
-            self.assertEqual(-41.26, actualEntry.PersonProfile1.pointNear.angle)            
+            self.assertEqual(-41.26, actualEntry.PersonProfile1.pointNear.angle)        
             
+    def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForHitLeft(self):
+        for key, value in TestDataSample1.iteritems():
+            actualEntry = P_Data(key, value)
+            self.assertEqual(1.16, actualEntry.PersonProfile2.time_seconds)
+            self.assertEqual(11.83, actualEntry.PersonProfile2.pointNear.radius)
+            self.assertEqual(36.57, actualEntry.PersonProfile2.pointNear.angle)
+            
+    def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForHitRight(self):
+        for key, value in TestDataSample3.iteritems():
+            actualEntry = P_Data(key, value)
+            self.assertEqual(1.31, actualEntry.PersonProfile2.time_seconds)
+            self.assertEqual(18.96, actualEntry.PersonProfile2.pointNear.radius)
+            self.assertEqual(-37.19, actualEntry.PersonProfile2.pointNear.angle)
+                        
 if __name__ == "__main__":
     unittest.main()

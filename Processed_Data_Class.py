@@ -30,6 +30,21 @@ class P_Data:
                 point = PolarPointClass(float(dataArray[Raw.firstRIGHTradius_in]), float(dataArray[Raw.firstRIGHTdegrees]))
             pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
             self.PersonProfile1 = PersonProfileClass(0, pointNear, pointFar)
+            
+            # for a hit we need to select the nearest point
+            if  (self.event == "Hit"):
+                # is left or right foot closer?
+                if (dataArray[Raw.atfridgeLEFTradius_in] <= dataArray[Raw.atfridgeRIGHTradius_in]):
+                    text_time_stamp = dataArray[Raw.atfridgeLEFTtstamp] 
+                    point = PolarPointClass(float(dataArray[Raw.atfridgeLEFTradius_in]), float(dataArray[Raw.atfridgeLEFTdegrees]))
+                else:
+                    text_time_stamp = dataArray[Raw.atfridgeRIGHTtstamp] 
+                    point = PolarPointClass(float(dataArray[Raw.atfridgeRIGHTradius_in]), float(dataArray[Raw.atfridgeRIGHTdegrees]))
+                interval_to_fridge = round(Time_Calculator.returnDeltaTime(text_time_stamp).total_seconds() - reference_time,2)
+                pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
+                self.PersonProfile2 = PersonProfileClass(interval_to_fridge, pointNear, pointFar)
+            else: # for a miss we select the last point
+                pass 
         else:
             self.sex = None
             self.age = None
