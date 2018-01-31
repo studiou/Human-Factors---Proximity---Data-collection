@@ -115,7 +115,8 @@ class TestCartesianClass(unittest.TestCase):
             self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
             self.assertEqual(34.29, actualEntry.PersonProfile1.pointNear.radius)
             self.assertEqual(-41.26, actualEntry.PersonProfile1.pointNear.angle)        
-            
+   
+   # note these are not that close to the fridge!         
     def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForHitLeft(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
@@ -130,5 +131,11 @@ class TestCartesianClass(unittest.TestCase):
             self.assertEqual(18.96, actualEntry.PersonProfile2.pointNear.radius)
             self.assertEqual(-37.19, actualEntry.PersonProfile2.pointNear.angle)
                         
+    def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForMissLeftInitial(self):
+        for key, value in TestDataSample_WithFalseAlarm.iteritems():
+            actualEntry = P_Data(key, value)
+            self.assertEqual(0, actualEntry.PersonProfile1.time_seconds)
+            self.assertEqual(31, actualEntry.PersonProfile1.pointNear.radius)
+            self.assertEqual(-22, actualEntry.PersonProfile1.pointNear.angle)
 if __name__ == "__main__":
     unittest.main()
