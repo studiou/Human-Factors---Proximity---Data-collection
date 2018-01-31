@@ -18,20 +18,22 @@ class P_Data:
             self.age = dataArray[Raw.age]
             self.event = dataArray[Raw.event]
             self.target = dataArray[Raw.target]
-#
-#            first find the oldest
-            #oldest, whichTime = Time_Calculator.oldest_time(dataArray[Raw.firstLEFTtstamp,Raw.firstRIGHTtstamp])
-            #if whichTime == 1
-            #   foot = "left"
-           #     PersonProfileClass =
-            #
 
+#            first find the oldest ofr the first 2 steps ... 
+            oldest, whichTime = Time_Calculator.oldest_time(dataArray[Raw.firstLEFTtstamp],dataArray[Raw.firstRIGHTtstamp])
+            reference_time = oldest.total_seconds() # used later as part of time normalization
+            if (whichTime == 1):
+                foot = "Left"
+                point = PolarPointClass(float(dataArray[Raw.firstLEFTradius_in]), float(dataArray[Raw.firstLEFTdegrees]))
+            else:
+                foot = "Right"
+                point = PolarPointClass(float(dataArray[Raw.firstRIGHTradius_in]), float(dataArray[Raw.firstRIGHTdegrees]))
             # else
 #
 #            then given that...  the first time is always 0..
 #             use routine to calculate the 2 points in the person profile
-            foot = "Left"
-            point = PolarPointClass(37, 0)
+#             foot = "Left"
+#             point = PolarPointClass(37, 0)
             pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
             self.PersonProfile1 = PersonProfileClass(0, pointNear, pointFar)
 #             
