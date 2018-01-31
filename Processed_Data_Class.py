@@ -44,7 +44,16 @@ class P_Data:
                 pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
                 self.PersonProfile2 = PersonProfileClass(interval_to_fridge, pointNear, pointFar)
             else: # for a miss we select the last point
-                pass 
+                # is the last step left or right?
+                if (dataArray[Raw.lastLEFTradius_in] >= dataArray[Raw.lastRIGHTradius_in]):
+                    text_time_stamp = dataArray[Raw.lastLEFTtstamp] 
+                    point = PolarPointClass(float(dataArray[Raw.lastLEFTradius_in]), float(dataArray[Raw.lastLEFTdegrees]))
+                else:
+                    text_time_stamp = dataArray[Raw.lastRIGHTtstamp] 
+                    point = PolarPointClass(float(dataArray[Raw.lastRIGHTradius_in]), float(dataArray[Raw.lastRIGHTdegrees]))
+                interval_to_exit = round(Time_Calculator.returnDeltaTime(text_time_stamp).total_seconds() - reference_time,2)
+                pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
+                self.PersonProfile2 = PersonProfileClass(interval_to_exit, pointNear, pointFar)                
         else:
             self.sex = None
             self.age = None
