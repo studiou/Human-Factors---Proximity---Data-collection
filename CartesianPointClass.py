@@ -22,8 +22,13 @@ class CartesianPointClass:
         if (self.x != None) and (self.y != None):
             radius = (self.x ** 2 + self.y ** 2) ** 0.5
             radius = round(radius, 2)
-            # angle is relative to the vertical line at x=0  - so zero is th line at x = 0
-            angle = round(math.degrees(math.atan(self.x / self.y)), 2)
+            if self.y == 0:
+                angle = 90
+                if self.x < 0:
+                    angle = angle * -1
+            else:
+                # angle is relative to the vertical line at x=0  - so zero is th line at x = 0
+                angle = round(math.degrees(math.atan(self.x / self.y)), 2)
         return radius, angle
         
         

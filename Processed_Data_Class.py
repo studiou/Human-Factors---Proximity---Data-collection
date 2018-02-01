@@ -101,21 +101,29 @@ def GenerateProfile(age = None, sex = None, foot = None, point = None):
                 p2y = orig_y + deltaLong_y 
         else:
             if (foot == "Left"):
-                p1x = orig_x + deltaShort_x
-                p1y = orig_y - deltaShort_y 
-                p2x = orig_x - deltaLong_x
-                p2y = orig_y + deltaLong_y
+                p1x = orig_x - deltaLong_x
+                p1y = orig_y + deltaLong_y
+                p2x = orig_x + deltaShort_x
+                p2y = orig_y - deltaShort_y 
             else:
-                p1x = orig_x + deltaLong_x
-                p1y = orig_y - deltaLong_y 
-                p2x = orig_x - deltaShort_x
-                p2y = orig_y + deltaShort_y
+                p1x = orig_x - deltaShort_x
+                p1y = orig_y + deltaShort_y
+                p2x = orig_x + deltaLong_x
+                p2y = orig_y - deltaLong_y
+        if p2y < 0:
+            p2y = 0 
         cartesianP1 = CartesianPointClass(p1x,p1y)
         polarP1_radius, polarP1_angle =  cartesianP1.getPolarCoordinates()
         point1 = PolarPointClass(polarP1_radius, polarP1_angle)
         cartesianP2 = CartesianPointClass(p2x,p2y)
         polarP2_radius, polarP2_angle =  cartesianP2.getPolarCoordinates()
         point2 = PolarPointClass(polarP2_radius, polarP2_angle)
+
+        if point1.radius > point2.radius:
+            point3 = point2
+            point2 = point1 
+            point1 = point3
+        
     return point1, point2
 
 

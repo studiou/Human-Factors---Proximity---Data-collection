@@ -51,103 +51,98 @@ class TestCartesianClass(unittest.TestCase):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual('Sub.17.Aug.28.10.47pm.a', actualEntry.pnum_video)
-  
+     
     def test_instantiation_WithNoData_pnum_video_is_None(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data()
             self.assertEqual(None, actualEntry.pnum_video)
-   
+      
     def test_instantiation_Correctfor_sex(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual("Female", actualEntry.sex)
-   
+      
     def test_instantiation_Correctfor_age(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual("Adult", actualEntry.age)
-   
+      
     def test_instantiation_Correctfor_event(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual("Hit", actualEntry.event)
-   
+      
     def test_instantiation_Correctfor_target(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual("Dispense", actualEntry.target)
-   
+      
     def test_instantiation_BadLength_NoAttributes(self):
         for key, value in TestDataSample2_BadLength.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(None, actualEntry.target)
-              
+                 
     def test_instantiation_WithNoArrayu(self):
         for key, value in TestDataSample_WithFalseAlarm.iteritems():
             actualEntry = P_Data(key)
             self.assertEqual(None, actualEntry.sex)
- 
+    
     def test_instantiation_WithHitArrayDataLengthWrong(self):
         for key, value in TestDataSample1BadLength.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(None, actualEntry.sex)
- 
+    
     def test_instantiation_WithMissArrayDataLengthWrong(self):
         for key, value in TestDataSample_WithFalseAlarmBadDataLength.iteritems():
             actualEntry = P_Data(key,value)
             self.assertEqual(None, actualEntry.sex)
-              
+                 
     def test_instantiation_WithFalseAlarm_YieldsSex(self):
         for key, value in TestDataSample_WithFalseAlarm.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual("Female", actualEntry.sex)
- 
+    
     def test_instantiation_WithTestData1_FirstPersonProfileCorrectSelectingLeft(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
             self.assertEqual(37.25, actualEntry.PersonProfile1.pointNear.radius)
             self.assertEqual(6.71, actualEntry.PersonProfile1.pointNear.angle)
-            
+               
     def test_instantiation_WithTestData1_FirstPersonProfileCorrectSelectingRight(self):
         for key, value in TestDataSample2.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(0.0, actualEntry.PersonProfile1.time_seconds)
-            self.assertEqual(34.29, actualEntry.PersonProfile1.pointNear.radius)
-            self.assertEqual(-41.26, actualEntry.PersonProfile1.pointNear.angle)        
-   
-   # note these are not that close to the fridge!         
+            self.assertEqual(18.92, actualEntry.PersonProfile1.pointNear.radius)
+            self.assertEqual(-34.02, actualEntry.PersonProfile1.pointNear.angle)        
+      
     def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForHitLeft(self):
         for key, value in TestDataSample1.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(1.16, actualEntry.PersonProfile2.time_seconds)
             self.assertEqual(11.83, actualEntry.PersonProfile2.pointNear.radius)
             self.assertEqual(36.57, actualEntry.PersonProfile2.pointNear.angle)
-            
+#                
     def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForHitRight(self):
         for key, value in TestDataSample3.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(1.31, actualEntry.PersonProfile2.time_seconds)
-            self.assertEqual(18.96, actualEntry.PersonProfile2.pointNear.radius)
-            self.assertEqual(-37.19, actualEntry.PersonProfile2.pointNear.angle)
-                        
-    #                         this one seems wrong
+            self.assertEqual(7.29, actualEntry.PersonProfile2.pointNear.radius)
+            self.assertEqual(15.91, actualEntry.PersonProfile2.pointNear.angle)
+                          
     def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForMissLeftInitial(self):
         for key, value in TestDataSample_WithFalseAlarm.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(0, actualEntry.PersonProfile1.time_seconds)
-            self.assertEqual(39.73, actualEntry.PersonProfile1.pointNear.radius)
-            self.assertEqual(-33.86, actualEntry.PersonProfile1.pointNear.angle)
-            
-#             25L, 87L, u'00:00:06:595'
-#             38L, -12L, u'00:00:07:013'
-# this can't be right either....
+            self.assertEqual(28.15, actualEntry.PersonProfile1.pointNear.radius)
+            self.assertEqual(-15.61, actualEntry.PersonProfile1.pointNear.angle)
+          
     def test_instantiation_WithTestData1_2ndPersonProfileCorrectSelectingForMissFinalRight(self):
         for key, value in TestDataSample_WithFalseAlarm.iteritems():
             actualEntry = P_Data(key, value)
             self.assertEqual(1.04, actualEntry.PersonProfile2.time_seconds)
-            self.assertEqual(25.38, actualEntry.PersonProfile2.pointNear.radius)
-            self.assertEqual(-83.13, actualEntry.PersonProfile2.pointNear.angle)
+            self.assertEqual(25.2, actualEntry.PersonProfile2.pointNear.radius)
+            self.assertEqual(90.0, actualEntry.PersonProfile2.pointNear.angle)
                         
 if __name__ == "__main__":
     unittest.main()
