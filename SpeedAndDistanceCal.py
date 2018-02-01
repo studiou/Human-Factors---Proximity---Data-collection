@@ -13,8 +13,9 @@ def calDistance(x1, y1, x2, y2):
 def calSpeed(x1, y1, x2, y2,time1,time2):
     # accepts two cartesian points and returns the distance
     distance = calDistance(x1, y1, x2, y2)
-    print distance
-    timeTaken = timedelta.total_seconds(Time_Calculator.difference_bt_time(time1,time2))
-    print timeTaken
-    speed = round(distance/timeTaken,2)
+    timeTaken = time2 - time1
+    if timeTaken <= 0:
+        speed = 999999999   # obviously large
+    else:
+        speed = round(distance/timeTaken,2)
     return(speed)

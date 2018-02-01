@@ -6,8 +6,8 @@ y2= 31
 x1= 6
 y1=17
 
-time_1 = "00:00:03:302"
-time_2 = "00:00:05:383"
+time_1 = 03.302
+time_2 = 5.383
 
 class Speedcal(unittest.TestCase):
     """ Unit Test Framework Class """
