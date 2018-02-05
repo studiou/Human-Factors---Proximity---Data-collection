@@ -21,9 +21,9 @@ from Processed_Data_Class import *
 #IDO imac file path
 #filepath = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/"
 #U imac file path
-filepath = "/Users/joel/Misc/Joel's Stuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Score sheets from videos/Test"
-#filepath = "/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie"
-
+#filepath = "/Users/joel/Misc/Joel's Stuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Score sheets from videos/Test"
+filepath = '/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie'
+output = filepath + "/output.csv"
 
 #search filepath directory for xlsx files. returns the complete file paths for xlsx files
 allxlsxfilepaths = get_all_xlsx_filepaths.builddirectorylist(filepath)
@@ -48,7 +48,18 @@ print "Participant number + Video Name,Sex,Age,Event,Target,Time Stamp, Near poi
 for item in processedlist:
     print item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + item.target  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
 
-with open(filepath, "wb") as csv_file:
-    writer = csv.writer(csv_file, delimiter=',')
-    for line in processedlist:
-        writer.writerow(line)
+
+###Create CSV
+filehandler = open(output,'w')
+#Print header
+print >> filehandler,  "Participant number + Video Name,Sex,Age,Event,Target,Time Stamp, Near point radius, Near point angle, Far point radius, Far point angle, Time Stamp, Near point radius, Near point angle, Far point radius, Far point angle"
+
+for item in processedlist:
+    if item.event == "False alarm":
+        printline =  item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + "N/A"  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
+    else:
+        printline = item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + item.target  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
+
+    print >>filehandler,printline
+filehandler.close()
+#finished inputting data so close the file and write it to a txt doc
