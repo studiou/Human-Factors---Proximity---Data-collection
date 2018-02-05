@@ -1,4 +1,5 @@
 __author__ = 'joel'
+#if you have trouble run sudo pip install --upgrade pip enum34
 from enum import Enum
 class Raw(Enum):
             # sex - Male/Female

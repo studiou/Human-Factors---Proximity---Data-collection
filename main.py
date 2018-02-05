@@ -18,9 +18,12 @@ from Processed_Data_Class import *
 
 
 #Strings holds the filepath of the excel spreadsheets with the collected data
-#imac file path
+#IDO imac file path
 #filepath = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/"
-filepath = "/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie"
+#U imac file path
+filepath = "/Users/joel/Misc/Joel's Stuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Score sheets from videos/Test"
+#filepath = "/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie"
+
 
 #search filepath directory for xlsx files. returns the complete file paths for xlsx files
 allxlsxfilepaths = get_all_xlsx_filepaths.builddirectorylist(filepath)
@@ -45,17 +48,7 @@ print "Participant number + Video Name,Sex,Age,Event,Target,Time Stamp, Near poi
 for item in processedlist:
     print item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + item.target  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
 
-
-ifile = open('output.csv',"rb")
-#CSV
-
-
-for key, value in imported_xls_data.iteritems():
-    processedlist.append(P_Data(key,value))
-
-print "\n processed data \n"
-print "Participant number + Video Name,Sex,Age,Event,Target,Time Stamp, Near point radius, Near point angle, Far point radius, Far point angle, Time Stamp, Near point radius, Near point angle, Far point radius, Far point angle \n"
-
-for item in processedlist:
-    print item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + item.target  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
-
+with open(filepath, "wb") as csv_file:
+    writer = csv.writer(csv_file, delimiter=',')
+    for line in processedlist:
+        writer.writerow(line)
