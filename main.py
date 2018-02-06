@@ -53,7 +53,7 @@ for item in processedlist:
 filehandler = open(output,'w')
 #Print header
 print >> filehandler,  "Participant number + Video Name,Sex,Age,Event,Target,Time Stamp, Near point radius, Near point angle, Far point radius, Far point angle, Time Stamp, Near point radius, Near point angle, Far point radius, Far point angle"
-
+#Print Data
 for item in processedlist:
     if item.event == "False alarm":
         printline =  item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + "N/A"  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
