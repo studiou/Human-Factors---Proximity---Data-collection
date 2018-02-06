@@ -55,9 +55,10 @@ class P_Data:
                 pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
                 self.PersonProfile2 = PersonProfileClass(interval_to_exit, pointNear, pointFar)
 
-
-            self.speed = SpeedAndDistanceCal.calSpeed(PersonProfile1.getCartesianCoordinates,PersonProfile2.getCartesianCoordinates)
-
+            self.speed = SpeedAndDistanceCal.calSpeed(PersonProfile1.pointNear.getCartesianCoordinates(),
+                                                      PersonProfile2.pointNear.getCartesianCoordinates(),
+                                                      PersonProfile1.time_seconds,
+                                                      PersonProfile1.time_seconds)
         else:
             self.sex = None
             self.age = None
