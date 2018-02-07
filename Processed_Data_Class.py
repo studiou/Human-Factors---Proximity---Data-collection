@@ -54,19 +54,19 @@ class P_Data:
                 interval_to_exit = round(Time_Calculator.returnDeltaTime(text_time_stamp).total_seconds() - reference_time,2)
                 pointNear, pointFar = GenerateProfile(self.age, self.sex, foot, point)
                 self.PersonProfile2 = PersonProfileClass(interval_to_exit, pointNear, pointFar)
-
-
+            x1, y1 = self.PersonProfile1.pointNear.getCartesianCoordinates()
+            x2, y2 = self.PersonProfile2.pointNear.getCartesianCoordinates()
+            self.speed = calSpeed(x1, y1, x2, y2, self.PersonProfile1.time_seconds, self.PersonProfile1.time_seconds)
         else:
             self.sex = None
             self.age = None
             self.event = None
             self.target = None
             self.firstStep = None
-
-        self.speed = SpeedAndDistanceCal.calSpeed(self.PersonProfile1.pointNear.getCartesianCoordinates(),
-                                                      self.PersonProfile2.pointNear.getCartesianCoordinates(),
-                                                      self.PersonProfile1.time_seconds,
-                                                      self.PersonProfile1.time_seconds)
+            self.PersonProfile1 = PersonProfileClass()
+            self.PersonProfile2 = PersonProfileClass()
+            self.speed = None
+            
 
 # This function will calculate the 2 points that represent the minecraft person 
 # given the sex and age of the person.   
