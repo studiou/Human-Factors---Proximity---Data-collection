@@ -1,4 +1,5 @@
 import datetime
+from SpeedAndDistanceCal import *
 from datetime import timedelta
 
 def oldest_time(time_1, time_2):

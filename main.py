@@ -8,6 +8,7 @@ import Solve_For_X
 import get_all_xlsx_filepaths
 import math
 import Processed_Data_Class
+from SpeedAndDistanceCal import *
 import csv
 from Processed_Data_Class import *
 
@@ -56,9 +57,10 @@ print >> filehandler,  "Participant number + Video Name,Sex,Age,Event,Target,Tim
 #Print Data
 for item in processedlist:
     if item.event == "False alarm":
-        printline =  item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + "N/A"  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
+        printline =  item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + "N/A"  + ", " +  str(item.speed) + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
+
     else:
-        printline = item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + item.target  + ", " + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
+        printline = item.pnum_video + ", " + item.sex + ", " + item.age  + ", " + item.event  + ", " + item.target  + ", " + str(item.speed) + str(item.PersonProfile1.time_seconds) + ", " + str(item.PersonProfile1.pointNear.radius) + ", " + str(item.PersonProfile1.pointNear.angle) + ", " + str(item.PersonProfile1.pointFar.radius ) + ", " + str(item.PersonProfile1.pointFar.angle ) + ", " + str(item.PersonProfile2.time_seconds) + ", " + str(item.PersonProfile2.pointNear.radius ) + ", " + str(item.PersonProfile2.pointNear.angle) + ", " + str(item.PersonProfile2.pointFar.radius) + ", " + str(item.PersonProfile2.pointFar.angle)
 
     print >>filehandler,printline
 filehandler.close()
