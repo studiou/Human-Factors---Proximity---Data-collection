@@ -7,6 +7,7 @@ from PolarPointClass import *
 from CartesianPointClass import *
 from PersonProfileClass import *
 from Dict_Enum import *
+from DistanceFromPointToLine import *
 
 class P_Data:
     def __init__(self, pnum_video=None, dataArray=None):
@@ -56,7 +57,10 @@ class P_Data:
                 self.PersonProfile2 = PersonProfileClass(interval_to_exit, pointNear, pointFar)
             x1, y1 = self.PersonProfile1.pointNear.getCartesianCoordinates()
             x2, y2 = self.PersonProfile2.pointNear.getCartesianCoordinates()
-            self.speed = calSpeed(x1, y1, x2, y2, self.PersonProfile1.time_seconds, self.PersonProfile1.time_seconds)
+            dispenserLocationx = 0
+            dispensorLocationy = 0
+            self.speed = calSpeed(x1, y1, x2, y2, self.PersonProfile1.time_seconds, self.PersonProfile2.time_seconds)
+            self.nearestDistanceFA = DistanceFromPointToLine(x1,y1,x2,y2,dispenserLocationx,dispensorLocationy)
         else:
             self.sex = None
             self.age = None

@@ -13,7 +13,11 @@ def calDistance(x1, y1, x2, y2):
 def calSpeed(x1, y1, x2, y2,time1,time2):
     # accepts two cartesian points and returns the distance
     distance = calDistance(x1, y1, x2, y2)
+
     timeTaken = time2 - time1
+
+    #print " x1 = " + str(x1) + " y1 = " + str(y1) + " x2 = " + str(x2) + " y2 = " + str(y2) + " t1 = " + str(time1) +   " t2 = " + str(time2) + "\n distance =" + str(distance) + " time taken = " + str (timeTaken)
+
     if timeTaken <= 0:
         speed = 999999999   # obviously large
     else:
