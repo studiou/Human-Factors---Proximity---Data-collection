@@ -7,6 +7,7 @@ import unittest
 import os.path
 
 from DistanceFromPointToLine import *
+from CartesianPointClass import *
 
 x1_45DegreeLine = 0.0
 y1_45DegreeLine = 20.0
@@ -84,7 +85,13 @@ class TestDistanceFromPointToLine(unittest.TestCase):
         distance, x, y = DistanceFromPointToLine(x1_HorizontalLine, y1_HorizontalLine, x2_HorizontalLine, y2_HorizontalLine, 50.0, y2_HorizontalLine)
         self.assertEqual(0.0, distance)
         self.assertEqual(50, x)
-        self.assertEqual(y2_HorizontalLine, y)        
+        self.assertEqual(y2_HorizontalLine, y)
+        
+    def testPointOnLineReturnsDistanceAsRadius(self):
+        distance, x, y = DistanceFromPointToLine(x1_45DegreeLine, y1_45DegreeLine, x2_45DegreeLine, y2_45DegreeLine, 20.0, 20.0)
+        cartPoint = CartesianPointClass(x,y)
+        radius, angle = CartesianPointClass(x,y).getPolarCoordinates()
+        self.assertEqual(radius, distance)
         
 if __name__ == "__main__":
     unittest.main()

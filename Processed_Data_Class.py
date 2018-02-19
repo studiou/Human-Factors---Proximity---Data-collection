@@ -60,7 +60,10 @@ class P_Data:
             dispenserLocationx = 0
             dispensorLocationy = 0
             self.speed = calSpeed(x1, y1, x2, y2, self.PersonProfile1.time_seconds, self.PersonProfile2.time_seconds)
-            self.nearestDistanceFA = DistanceFromPointToLine(x1,y1,x2,y2,dispenserLocationx,dispensorLocationy)
+            distance, x, y = DistanceFromPointToLine(x1,y1,x2,y2,dispenserLocationx,dispensorLocationy)
+            radius, angle = CartesianPointClass(x,y).getPolarCoordinates()
+            self.nearestDistancePolarPoint  = PolarPointClass(radius, angle)
+#             self.nearestDistanceFA = DistanceFromPointToLine(x1,y1,x2,y2,dispenserLocationx,dispensorLocationy)
         else:
             self.sex = None
             self.age = None
