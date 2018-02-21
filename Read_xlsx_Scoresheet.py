@@ -28,6 +28,8 @@ def importfromxls(allxlsxfilepaths):
         workbook = load_workbook(allxlsxfilepaths[filepointer])
         sheet = workbook['Data Sheet']
 
+
+
         #temporarly store data from spreadsheet
         temp = []
         flag = 1
@@ -35,6 +37,7 @@ def importfromxls(allxlsxfilepaths):
         #loop for every row in the spreadsheet
         for row in sheet.iter_rows(row_offset=2):
             #loop for every cell in each row
+
             for cell in row:
                 if cell.value == "Subject#.Video.Filename":#break loop once you hit the end of data entry within the spreadsheet.
                     break

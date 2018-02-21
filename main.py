@@ -36,7 +36,7 @@ imported_xls_data = {}
 #get data from excel spreadsheet and dump it into imported_xls_dta array. Just pass the file path to the function and it returns an array with all data from the array
 imported_xls_data = Read_xlsx_Scoresheet.importfromxls(allxlsxfilepaths)
 
-#print imported_xls_data
+print imported_xls_data
 
 processedlist = []
 

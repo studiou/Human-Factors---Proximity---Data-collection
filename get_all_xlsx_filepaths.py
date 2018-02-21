@@ -6,10 +6,12 @@ def builddirectorylist(path,depth =0):
     if(os.path.isdir(path)):
         for item in os.listdir(path):
             #only grab the file paths that end in .xlsx
-            if item[-5:] == '.xlsx':
-                allxlsxfilepaths.extend(builddirectorylist(path+os.sep+item,depth+1))
+            if item[0:1] != "~":
+                if item[-5:] == '.xlsx':
+                    allxlsxfilepaths.extend(builddirectorylist(path+os.sep+item,depth+1))
     else:
         #only grab the file paths that end in .xlsx
         if path[-5:] == '.xlsx':
             allxlsxfilepaths.append(path)
     return allxlsxfilepaths
+
