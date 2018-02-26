@@ -53,7 +53,7 @@ for item in processedlist:
 ###Create CSV
 filehandler = open(output,'w')
 #Print header
-print >> filehandler,  "Participant number + Video Name,Sex,Age,Event,Target,Closest to Dispenser (radius),Speed,Time Stamp, Enter Mat Near Point Radius, Enter Mat Near Point Angle, Enter mat far point radius, Enter Mat Far Point Angle, Time Stamp, Final Step Near Point Radius, Final Step Near Point Angle, Final Step Far Point Radius, Final Step Far Point Angle"
+print >> filehandler,  "Participant number + Video Name,Sex,Age,Event,Target,Speed,Closest to Dispenser (radius),Time Stamp, Enter Mat Near Point Radius, Enter Mat Near Point Angle, Enter mat far point radius, Enter Mat Far Point Angle, Time Stamp, Final Step Near Point Radius, Final Step Near Point Angle, Final Step Far Point Radius, Final Step Far Point Angle"
 #Print Data
 for item in processedlist:
     if item.event == "False alarm":
