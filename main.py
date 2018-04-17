@@ -20,10 +20,10 @@ from Processed_Data_Class import *
 
 #Strings holds the filepath of the excel spreadsheets with the collected data
 #IDO imac file path
-#filepath = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie"
+filepath = "/Volumes/JoelsStuff/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie"
 #U imac file path
 #filepath = "/Users/joel/Misc/Joel's Stuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Data collection/Score sheets from videos/Test"
-filepath = '/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie'
+#filepath = '/Users/joel/Misc/JoelsStuff/OneDrive - GE Appliances/GEA Usability Team Documents/Exploratory Research/Proximity/Prox Python Code/testie'
 output = filepath + "/output.csv"
 
 #search filepath directory for xlsx files. returns the complete file paths for xlsx files
