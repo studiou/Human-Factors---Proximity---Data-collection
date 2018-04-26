@@ -36,24 +36,24 @@ def intersecting(vecX1, vecY1, vecX2, vecY2, triX1, triY1, triX2, triY2,triX3, t
     #If segment is strictly outside triangle, or triangle is strictly
     #apart from the line, we're not intersecting
     if ((f1 < 0 and f2 < 0) or (f3 < 0 and f4 < 0) or (f5 < 0 and f6 < 0) or (f7 > 0 and f8 > 0)):
-        output = "NOT_INTERSECTING"
+        output = "motion not detected"
 
     #If segment is aligned with one of the edges, we're overlapping */
     if ((f1 == 0 and f2 == 0) or (f3 == 0 and f4 == 0) or (f5 == 0 and f6 == 0)):
-        output = "OVERLAPPING"
+        output = "motion detected"
 
     #If segment is outside but not strictly, or triangle is apart but
     #not strictly, we're touching */
     if ((f1 <= 0 and f2 <= 0) or (f3 <= 0 and f4 <= 0) or (f5 <= 0 and f6 <= 0) or (f7 >= 0 and f8 >= 0)):
-        output = "TOUCHING"
+        output = "motion detected"
 
     #/* If both segment points are strictly inside the triangle, we
     # * are not intersecting either */
     if (f1 > 0 and f2 > 0 and f3 > 0 and f4 > 0 and f5 > 0 and f6 > 0):
-        output = "NOT_INTERSECTING"
+        output = "motion not detected"
 
     #Otherwise we're intersecting with at least one edge */
-        output = "INTERSECTING"
+        output = "motion detected"
 
 
     return output
