@@ -34,13 +34,13 @@ class Speedcal(unittest.TestCase):
         pass
 
     def test_intersecting_test1(self):
-        output = Bootstrap.intersecting(IN_vecX1, IN_vecY1, triX3, triY3, triX1, triY1, triX2, triY2)
-        expectedTimeOutcome = "motion not detected"
+        output = Bootstrap.intersecting(IN_vecX1, IN_vecY1,IN_vecX2,IN_vecY2, triX3, triY3, triX1, triY1, triX2, triY2)
+        expectedTimeOutcome = "motion detected"
         self.assertEqual(expectedTimeOutcome, output)
 
     def test_intersecting_test2(self):
-        output = Bootstrap.intersecting(Non_IN_vecX1, Non_IN_vecY1, triX3, triY3, triX1, triY1, triX2, triY2)
-        expectedTimeOutcome = "motion detected"
+        output = Bootstrap.intersecting(Non_IN_vecX1, Non_IN_vecY1,Non_IN_vecX2,Non_IN_vecY2, triX3, triY3, triX1, triY1, triX2, triY2)
+        expectedTimeOutcome = "motion not detected"
         self.assertEqual(expectedTimeOutcome, output)
 
 if __name__ == "__main__":

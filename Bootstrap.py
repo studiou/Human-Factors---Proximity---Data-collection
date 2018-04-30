@@ -19,19 +19,23 @@ def intersecting(vecX1, vecY1, vecX2, vecY2, triX1, triY1, triX2, triY2,triX3, t
      #delimited by the triangle.
     #vector 1
     output = "ERROR"
-
+    #vector 1
     f1 = float(side(vecX1, vecY1, triX3, triY3, triX1, triY1, triX2, triY2))
     f3 = float(side(vecX1, vecY1, triX1, triY1, triX2, triY2, triX3, triY3))
     f5 = float(side(vecX1, vecY1, triX2, triY2, triX3, triY3, triX1, triY1))
     #vector 2
-    f2 = float(side(vecX1, vecY1, triX3, triY3, triX1, triY1, triX2, triY2))
-    f4 = float(side(vecX1, vecY1, triX1, triY1, triX2, triY2, triX3, triY3))
-    f6 = float(side(vecX1, vecY1, triX2, triY2, triX3, triY3, triX1, triY1))
+    f2 = float(side(vecX2, vecY2, triX3, triY3, triX1, triY1, triX2, triY2))
+    f4 = float(side(vecX2, vecY2, triX1, triY1, triX2, triY2, triX3, triY3))
+    f6 = float(side(vecX2, vecY2, triX2, triY2, triX3, triY3, triX1, triY1))
 
     #Check whether triangle is totally inside one of the two half-planes
     #delimited by the segment.
     f7 = side(triX1, triY1, triX2, triY2, vecX1, vecY1, vecX2, vecY2)
     f8 = side(triX2, triY2, triX3, triY3, vecX1, vecY1, vecX2, vecY2)
+
+    #Otherwise we're intersecting with at least one edge */
+    output = "motion detected"
+
 
     #If segment is strictly outside triangle, or triangle is strictly
     #apart from the line, we're not intersecting
@@ -51,9 +55,5 @@ def intersecting(vecX1, vecY1, vecX2, vecY2, triX1, triY1, triX2, triY2,triX3, t
     # * are not intersecting either */
     if (f1 > 0 and f2 > 0 and f3 > 0 and f4 > 0 and f5 > 0 and f6 > 0):
         output = "motion not detected"
-
-    #Otherwise we're intersecting with at least one edge */
-        output = "motion detected"
-
 
     return output
