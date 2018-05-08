@@ -26,6 +26,7 @@ def line_intersection_test( p0_x, p0_y, p1_x, p1_y, p2_x, p2_y, p3_x, p3_y):
 
     return outcome
 
+#basically feed line segment and the three lines that form the triangle separately to line_intersect_test to see if they intersect
 def triangle_intersection_test(vecX1, vecY1, vecX2, vecY2, triX1, triY1, triX2, triY2,triX3, triY3):
 
     side_1_test = line_intersection_test(vecX1, vecY1, vecX2, vecY2, triX1, triY1, triX2, triY2)
